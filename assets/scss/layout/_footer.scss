@@ -1,0 +1,40 @@
+/* footer */
+
+.footer {
+	--img-height: 48px;
+
+	.menu {
+		line-height: var(--img-height);
+	}
+
+	.social {
+		img {
+			height: var(--img-height);
+		}
+	}
+
+	.material-icons-outlined {
+		vertical-align: middle;
+	}
+
+
+	@include break-md {
+		--img-height: 40px;
+	}
+
+	@include break-sm {
+		--img-height: 24px;
+		
+		.menu {
+			display: none;
+		}
+
+		.copyright {
+			flex-direction: column;
+
+			.law {
+				flex-direction: column;
+			}
+		}
+	}
+}

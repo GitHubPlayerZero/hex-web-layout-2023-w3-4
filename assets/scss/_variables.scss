@@ -1,0 +1,54 @@
+// debug outline
+$isDebug: false;
+
+
+// font
+$font-en: 'Roboto', sans-serif;
+
+
+// grid
+$column-count: 12;
+$column-width: 86px;
+$gutter-width: 24px;
+
+$column-width-md: 36px;
+
+$column-count-sm: 4;
+$column-width-sm: 69px;
+
+
+// space base
+$space: 4px;
+
+
+// color
+$color-primary: #AA0601;
+$color-secondary: #650300;
+$color-white: #FFF;
+$color-black: #000;
+$color-catch: #FBF2F2;
+$color-info-1: #555555;
+$color-info-2: #707070;
+$color-important-1: #9F1213;
+$color-pick-1: #5F3E2D;
+$color-pick-2: #B75929;
+$color-muted-1: #00000029;
+$color-muted-2: #00000020;
+$color-muted-3: #DEE2E6;
+$color-muted-4: #F2F2F2;
+$color-muted-5: #DCDCDC;
+$color-dark-1: #212529;
+$color-dark-2: #0A0A0A;
+
+
+// variable definition
+$pad: "md";
+$phone: "sm";
+$margin: "m";
+$padding: "p";
+$top: "t";
+$right: "r";
+$bottom: "b";
+$left: "l";
+$horizontal: "x";
+$vertical: "y";

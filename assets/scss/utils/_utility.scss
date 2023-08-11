@@ -1,0 +1,30 @@
+/* utility style */
+
+.font-en {
+	font-family: $font-en;
+}
+
+.menu {
+	display: flex;
+
+	a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.link-style {
+	&:hover {
+		text-decoration: underline;
+	}
+	
+	img:hover {
+		opacity: 0.5;
+	}
+}

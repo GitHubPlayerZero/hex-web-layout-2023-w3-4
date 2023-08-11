@@ -1,0 +1,37 @@
+/* header */
+
+.header {
+	
+	.logo {
+		width: 80px;
+	}
+
+	
+	@include break-sm {
+
+		nav {
+			@include container-clear;
+			flex-direction: column;
+		}
+
+		.menu {
+			flex-wrap: wrap;
+
+			// border
+			li {
+				border: 1px solid $color-white;
+			}
+			li:first-child {
+				border-right: none;
+				border-bottom: none;
+			}
+			li:nth-child(2) {
+				border-bottom: none;
+			}
+			li:nth-child(3) {
+				border-right: none;
+			}
+		}
+	}
+	
+}

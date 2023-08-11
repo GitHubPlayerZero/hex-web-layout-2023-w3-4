@@ -1,0 +1,37 @@
+/* base */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	@if ($isDebug) {
+		outline: 1px dashed black;
+	}
+}
+div, p, li {
+	@if ($isDebug) {
+		outline: 1px solid blue;
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+hr {
+	margin-top: 0;
+	margin-bottom: 0;
+	border-width: 0 0 1px;
+}
+
+body {
+	font-family: 'Noto Sans TC', sans-serif;
+	line-height: 1.5;
+}

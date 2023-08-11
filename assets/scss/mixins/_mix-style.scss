@@ -1,0 +1,26 @@
+// gutter outside
+$gutter-outside: math.div($gutter-width, 2);
+$gutter-outside-reverse: $gutter-outside * -1;
+
+@mixin gutter-outside {
+	padding-left: $gutter-outside;
+	padding-right: $gutter-outside;
+}
+
+@mixin gutter-outside-reverse {
+	margin-left: $gutter-outside-reverse;
+	margin-right: $gutter-outside-reverse;
+}
+
+
+// container
+@mixin container-base {
+	@include gutter-outside;
+	margin: 0 auto;
+}
+
+@mixin container-clear {
+	max-width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}

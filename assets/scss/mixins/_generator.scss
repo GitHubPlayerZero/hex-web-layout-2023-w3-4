@@ -1,0 +1,157 @@
+@function hasPoint($point) {
+	@if ($point == null or $point == "") {
+		@return false;
+	}
+	@else {
+		@return true;
+	}
+}
+
+@function getClassName_Point($point) {
+	$result: "";
+
+	@if (hasPoint($point)) {
+		$result: "-" + $point;
+	}
+
+	@return $result;
+}
+
+
+// Generate .fz class for font-sizing.
+@mixin genClass_FontSize($sizeList, $point: null) {
+	$pointName: getClassName_Point($point);
+	@each $size in $sizeList {
+		.fz#{$pointName}-#{$size} {
+			font-size: #{$size}px;
+		}
+	}
+}
+
+
+// Generate .col class for sizing.
+@mixin genClass_ColWidth($colCnt, $point: null) {
+	$pointName: getClassName_Point($point);
+	@for $i from 1 through $colCnt {
+		.col#{$pointName}-#{$i} {
+			width: percentage( math.div($i, $colCnt) );
+		}
+	}
+}
+
+
+// Generate column-gap or row-gap class for spacing.
+@mixin genClass_Gap($sizeList, $className, $isCol: false) {
+
+	@each $value in $sizeList {
+		$gap: $value * $space;
+		
+		.#{$className}-#{$value} {
+			@if ($isCol) {
+				column-gap: $gap;
+			}
+			@else {
+				row-gap: $gap;
+			}
+		}
+	}
+}
+
+// Generate .gap-col class for spacing.
+@mixin genClass_ColumnGap($sizeList, $point: null) {
+	$className: "gap-col" + getClassName_Point($point);
+	@include genClass_Gap($sizeList, $className, true);
+}
+
+
+// Generate margin, padding spacing class.
+@mixin genClass_Spacing($sizeList, $spacingType, $direction, $point, $isFixed: false) {
+
+	@each $value in $sizeList {
+		$className: $spacingType + $direction + getClassName_Point($point);
+		$spacing: $value;
+
+		@if ($isFixed == false) {
+			$spacing: $spacing * $space;
+		}
+
+		$css: "";
+
+		@if ($spacingType == $margin) {
+			$css: "margin";
+		}
+		@else if ($spacingType == $padding) {
+			$css: "padding";
+		}
+		@else {
+			@error "spacingType：#{$spacingType} 不正確！";
+		}
+
+		.#{$className}-#{$value} {
+			@if ($direction == $top) {
+				#{$css}-top: $spacing;
+			}
+			@else if ($direction == $right) {
+				#{$css}-right: $spacing;
+			}
+			@else if ($direction == $bottom) {
+				#{$css}-bottom: $spacing;
+			}
+			@else if ($direction == $left) {
+				#{$css}-left: $spacing;
+			}
+			@else if ($direction == $horizontal) {
+				#{$css}-left: $spacing;
+				#{$css}-right: $spacing;
+			}
+			@else if ($direction == $vertical) {
+				#{$css}-top: $spacing;
+				#{$css}-bottom: $spacing;
+			}
+			@else {
+				@error "direction：#{$direction} 不正確！";
+			}
+		}
+	}
+}
+
+@mixin genClass_MarginTop($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $margin, $top, $point);
+}
+@mixin genClass_MarginRight($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $margin, $right, $point);
+}
+@mixin genClass_MarginRight_Fixed($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $margin, $right, $point, true);
+}
+@mixin genClass_MarginBottom($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $margin, $bottom, $point);
+}
+@mixin genClass_MarginLeft($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $margin, $left, $point);
+}
+@mixin genClass_MarginX($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $margin, $horizontal, $point);
+}
+@mixin genClass_MarginY($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $margin, $vertical, $point);
+}
+
+@mixin genClass_PaddingTop($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $padding, $top, $point);
+}
+@mixin genClass_PaddingRight($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $padding, $right, $point);
+}
+@mixin genClass_PaddingBottom($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $padding, $bottom, $point);
+}
+@mixin genClass_PaddingLeft($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $padding, $left, $point);
+}
+@mixin genClass_PaddingX($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $padding, $horizontal, $point);
+}
+@mixin genClass_PaddingY($sizeList, $point: null) {
+	@include genClass_Spacing($sizeList, $padding, $vertical, $point);
+}

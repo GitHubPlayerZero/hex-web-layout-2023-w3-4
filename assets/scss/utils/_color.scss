@@ -1,0 +1,47 @@
+/* color */
+
+//TODO
+$theme-color-setting: (
+	primary: (color: $color-primary, text: true, bg:true, border:true),
+	secondary: (color: $color-secondary, text: true, bg: true),
+	white: (color: $color-white, text: true, border: true),
+	black: (color: $color-black, bg: true),
+	catch: (color: $color-catch, bg: true),
+	info-1: (color: $color-info-1, text: true, border: true),
+	info-2: (color: $color-info-2, text: true, border: true),
+	important: (color: $color-important-1, border: true),
+	muted-1: (color: $color-muted-1, shadow: true),
+	muted-2: (color: $color-muted-2, border: true),
+	muted-3: (color: $color-muted-3, border: true),
+	muted-4: (color: $color-muted-4, bg: true),
+	muted-5: (color: $color-muted-5, border: true),
+	pick-1: (color: $color-pick-1, bg: true),
+	pick-2: (color: $color-pick-2, bg: true),
+	dark-1: (color: $color-dark-1, text: true),
+	dark-2: (color: $color-dark-2, text: true),
+);
+
+@each $key, $value in $theme-color-setting {
+	$color: map-get($value, color);
+	$isText: map-get($value, text);
+	$isBg: map-get($value, bg);
+	// $isBorder: map-get($value, border);
+
+	@if ($isText) {
+		.text-#{"" + $key} {
+			color: $color;
+		}
+	}
+
+	@if ($isBg) {
+		.bg-#{"" + $key} {
+			background-color: $color;
+		}
+	}
+
+	// @if ($isBorder) {
+	// 	.border-#{"" + $key} {
+	// 		border-color: $color;
+	// 	}
+	// }
+}

@@ -1,0 +1,37 @@
+/* sizing */
+
+@function countContainerWidth($colCnt, $colWidth, $gutterWidth) {
+	$gutterCnt: $colCnt - 1;
+	@return $colCnt * $colWidth + $gutterCnt * $gutterWidth + $gutterWidth;
+}
+
+
+.container {
+	max-width: countContainerWidth($column-count, $column-width, $gutter-width);
+	@include container-base;
+}
+
+@include genClass_ColWidth($column-count);
+
+
+@include break-md {
+	.container {
+		max-width: countContainerWidth($column-count, $column-width-md, $gutter-width);
+	}
+
+	@include genClass_ColWidth($column-count, $pad);
+}
+
+
+@include break-sm {
+	$width-sm: countContainerWidth($column-count-sm, $column-width-sm, $gutter-width);
+	.container {
+		max-width: $width-sm;
+	}
+	.container-sm {
+		max-width: $width-sm;
+		@include container-base;
+	}
+
+	@include genClass_ColWidth($column-count-sm, $phone);
+}
