@@ -41,17 +41,15 @@
 
 
 // Generate column-gap or row-gap class for spacing.
-@mixin genClass_Gap($sizeList, $className, $isCol: false) {
+@mixin genClass_Gap($sizeList, $className, $isCol: true) {
 
-	@each $value in $sizeList {
-		$gap: $value * $space;
-		
-		.#{$className}-#{$value} {
+	@each $key, $value in $sizeList {
+		.#{$className}-#{$key} {
 			@if ($isCol) {
-				column-gap: $gap;
+				column-gap: $value;
 			}
 			@else {
-				row-gap: $gap;
+				row-gap: $value;
 			}
 		}
 	}
@@ -60,21 +58,15 @@
 // Generate .gap-col class for spacing.
 @mixin genClass_ColumnGap($sizeList, $point: null) {
 	$className: "gap-col" + getClassName_Point($point);
-	@include genClass_Gap($sizeList, $className, true);
+	@include genClass_Gap($sizeList, $className);
 }
 
 
 // Generate margin, padding spacing class.
-@mixin genClass_Spacing($sizeList, $spacingType, $direction, $point, $isFixed: false) {
+@mixin genClass_Spacing($sizeList, $spacingType, $direction, $point) {
 
-	@each $value in $sizeList {
+	@each $key, $value in $sizeList {
 		$className: $spacingType + $direction + getClassName_Point($point);
-		$spacing: $value;
-
-		@if ($isFixed == false) {
-			$spacing: $spacing * $space;
-		}
-
 		$css: "";
 
 		@if ($spacingType == $margin) {
@@ -87,26 +79,26 @@
 			@error "spacingType：#{$spacingType} 不正確！";
 		}
 
-		.#{$className}-#{$value} {
+		.#{$className}-#{$key} {
 			@if ($direction == $top) {
-				#{$css}-top: $spacing;
+				#{$css}-top: $value;
 			}
 			@else if ($direction == $right) {
-				#{$css}-right: $spacing;
+				#{$css}-right: $value;
 			}
 			@else if ($direction == $bottom) {
-				#{$css}-bottom: $spacing;
+				#{$css}-bottom: $value;
 			}
 			@else if ($direction == $left) {
-				#{$css}-left: $spacing;
+				#{$css}-left: $value;
 			}
 			@else if ($direction == $horizontal) {
-				#{$css}-left: $spacing;
-				#{$css}-right: $spacing;
+				#{$css}-left: $value;
+				#{$css}-right: $value;
 			}
 			@else if ($direction == $vertical) {
-				#{$css}-top: $spacing;
-				#{$css}-bottom: $spacing;
+				#{$css}-top: $value;
+				#{$css}-bottom: $value;
 			}
 			@else {
 				@error "direction：#{$direction} 不正確！";
@@ -120,9 +112,6 @@
 }
 @mixin genClass_MarginRight($sizeList, $point: null) {
 	@include genClass_Spacing($sizeList, $margin, $right, $point);
-}
-@mixin genClass_MarginRight_Fixed($sizeList, $point: null) {
-	@include genClass_Spacing($sizeList, $margin, $right, $point, true);
 }
 @mixin genClass_MarginBottom($sizeList, $point: null) {
 	@include genClass_Spacing($sizeList, $margin, $bottom, $point);

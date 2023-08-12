@@ -1,9 +1,12 @@
 /* font size */
 
 $size-list: 14, 16, 18, 19, 20, 24, 32, 36, 40, 42, 48, 64;
+
 @include genClass_FontSize($size-list);
 
-$size-sm-list: 16, 20;
+@include break-md {
+	@include genClass_FontSize($size-list, $pad);
+}
 @include break-sm {
-	@include genClass_FontSize($size-sm-list, $phone);
+	@include genClass_FontSize($size-list, $phone);
 }

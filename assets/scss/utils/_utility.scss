@@ -4,6 +4,22 @@
 	font-family: $font-en;
 }
 
+.text-bold {
+	font-weight: bold;
+}
+
+
+.link-style {
+	&:hover {
+		text-decoration: underline;
+	}
+	
+	img:hover {
+		opacity: 0.5;
+	}
+}
+
+
 .menu {
 	display: flex;
 
@@ -19,12 +35,23 @@
 	}
 }
 
-.link-style {
-	&:hover {
-		text-decoration: underline;
+
+.border-title {
+	padding-left: 16px;
+	margin-top: 96px;
+	margin-bottom: 32px;
+	font-size: 48px;
+	font-weight: bold;
+	border-left: 8px solid $color-important;
+
+	@include break-md {
+		margin-top: 80px;
 	}
-	
-	img:hover {
-		opacity: 0.5;
+
+	@include break-sm {
+		margin-top: 40px;
+		margin-bottom: 24px;
+		font-size: 24px;
 	}
 }
+

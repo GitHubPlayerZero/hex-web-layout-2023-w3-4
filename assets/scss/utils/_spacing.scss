@@ -5,28 +5,47 @@
 
 
 // padding top
-$pt-list: 12;
-
+$pt-list: (
+	12: 12 * $space,
+);
 @include genClass_PaddingTop($pt-list);
+
+@include break-md {
+	@include genClass_PaddingTop($pt-list, $pad);
+}
+@include break-sm {
+	@include genClass_PaddingTop($pt-list, $phone);
+}
 
 
 // padding bottom
-$pb-list: 8;
+$pb-list: (
+	8: 8 * $space,
+	10: 10 * $space,
+);
 @include genClass_PaddingBottom($pb-list);
 
-$pb-md-list: 10;
 @include break-md {
-	@include genClass_PaddingBottom($pb-md-list, $pad);
+	@include genClass_PaddingBottom($pb-list, $pad);
+}
+@include break-sm {
+	@include genClass_PaddingBottom($pb-list, $phone);
 }
 
 
 // padding y
-$py-list: 3, 4;
+$py-list: (
+	3: 3 * $space,
+	4: 4 * $space,
+	6: 6 * $space,
+);
 @include genClass_PaddingY($py-list);
 
-$py-sm-list: 6;
+@include break-md {
+	@include genClass_PaddingY($py-list, $pad);
+}
 @include break-sm {
-	@include genClass_PaddingY($py-sm-list, $phone);
+	@include genClass_PaddingY($py-list, $phone);
 }
 
 
@@ -38,38 +57,37 @@ $py-sm-list: 6;
 }
 
 
-// margin top
-$mt-list: 6, 24;
-@include genClass_MarginTop($mt-list);
-
-$mt-md-list: 2, 20;
-@include break-md {
-	@include genClass_MarginTop($mt-md-list, $pad);
-}
-
-$mt-sm-list: 4, 10;
-@include break-sm {
-	@include genClass_MarginTop($mt-sm-list, $phone);
-}
-
-
 // margin right
-$mr-list: 5;
+$mr-list: (
+	5: 5 * $space,
+	10px: 10px,
+);
 @include genClass_MarginRight($mr-list);
 
-$mr-fixed-sm-list: 10px;
+@include break-md {
+	@include genClass_MarginRight($mr-list, $pad);
+}
 @include break-sm {
-	@include genClass_MarginRight_Fixed($mr-fixed-sm-list, $phone);
+	@include genClass_MarginRight($mr-list, $phone);
 }
 
 
 // margin bottom
-$mb-list: 2, 6, 8, 20;
+$mb-list: (
+	2: 2 * $space,
+	4: 4 * $space,
+	6: 6 * $space,
+	8: 8 * $space,
+	16: 16 * $space,
+	20: 20 * $space,
+);
 @include genClass_MarginBottom($mb-list);
 
-$mb-sm-list: 2, 4, 6, 16;
+@include break-md {
+	@include genClass_MarginBottom($mb-list, $pad);
+}
 @include break-sm {
-	@include genClass_MarginBottom($mb-sm-list, $phone);
+	@include genClass_MarginBottom($mb-list, $phone);
 }
 
 
@@ -78,15 +96,19 @@ $mb-sm-list: 2, 4, 6, 16;
 /* gap */
 
 // column-gap
-$gap-col-list: 8, 12, 16;
+$gap-col-list: (
+	0: 0,
+	2: 2 * $space,
+	4: 4 * $space,
+	8: 8 * $space,
+	12: 12 * $space,
+	16: 16 * $space,
+);
 @include genClass_ColumnGap($gap-col-list);
 
-$gap-col-md-list: 4;
 @include break-md {
-	@include genClass_ColumnGap($gap-col-md-list, $pad);
+	@include genClass_ColumnGap($gap-col-list, $pad);
 }
-
-$gap-col-sm-list: 0, 2;
 @include break-sm {
-	@include genClass_ColumnGap($gap-col-sm-list, $phone);
+	@include genClass_ColumnGap($gap-col-list, $phone);
 }
