@@ -1,7 +1,10 @@
 /* utility style */
 
-.font-en {
-	font-family: $font-en;
+.font-noto {
+	font-family: 'Noto Sans TC', sans-serif;
+}
+.font-roboto {
+	font-family: 'Roboto', sans-serif;
 }
 
 .text-bold {
@@ -9,7 +12,7 @@
 }
 
 
-.link-style {
+.link {
 	&:hover {
 		text-decoration: underline;
 	}
