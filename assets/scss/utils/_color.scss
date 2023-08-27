@@ -1,30 +1,32 @@
 /* color */
 
 $theme-color-setting: (
-	primary: $color-primary,
-	secondary: $color-secondary,
-	white: $color-white,
-	black: $color-black,
-	catch: $color-catch,
-	info: $color-info,
-	info2: $color-info2,
-	important: $color-important,
-	muted: $color-muted,
-	muted2: $color-muted2,
-	muted3: $color-muted3,
-	muted4: $color-muted4,
-	muted5: $color-muted5,
-	pick1: $color-pick1,
-	pick2: $color-pick2,
-	dark: $color-dark,
-	dark2: $color-dark2,
+	"primary": $color-primary,
+	"secondary": $color-secondary,
+	"white": $color-white,
+	"black": $color-black,
+	"catch": $color-catch,
+	"info": $color-info,
+	"info2": $color-info2,
+	"info3": $color-info3,
+	"important": $color-important,
+	"muted": $color-muted,
+	"muted2": $color-muted2,
+	"muted3": $color-muted3,
+	"muted4": $color-muted4,
+	"muted5": $color-muted5,
+	"muted6": $color-muted6,
+	"pick1": $color-pick1,
+	"pick2": $color-pick2,
+	"dark": $color-dark,
+	"dark2": $color-dark2,
 );
 
 @each $key, $value in $theme-color-setting {
-	.text-#{"" + $key} {
+	.text-#{$key} {
 		color: $value;
 	}
-	.bg-#{"" + $key} {
+	.bg-#{$key} {
 		background-color: $value;
 	}
 }

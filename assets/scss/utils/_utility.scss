@@ -10,6 +10,13 @@
 .text-bold {
 	font-weight: bold;
 }
+.text-nowrap {
+	white-space: nowrap;
+}
+
+.material-icons-outlined {
+	vertical-align: middle;
+}
 
 
 .link {
@@ -58,3 +65,62 @@
 	}
 }
 
+.store-card {
+	color: $color-dark;
+	font-size: 20px;
+
+	&-image {
+		height: 224px;
+		background-size: cover;
+		background-position: left center;
+	}
+
+	&-title {
+		font-size: 24px;
+		padding: 8px 24px 8px 24px;
+		border: 1px solid $color-muted2;
+	}
+
+	&-content {
+		padding: 16px 24px 16px 26px;
+		border: 1px solid $color-muted2;
+
+		li:not(:last-child) {
+			margin-bottom: 8px;
+		}
+	}
+
+	.material-icons-outlined {
+		font-size: 20px;
+		margin-right: 10px;
+	}
+}
+
+.map {
+	@include break-md {
+		height: 414px;
+	}
+
+	@include break-sm {
+		height: 208px;
+	}
+}
+
+.dropdown {
+	width: 304px;
+	color: $color-info3;
+	font-size: 18px;
+	line-height: 1.5;
+	padding: 6px 0 6px 12px;
+	border: 1px solid $color-muted6;
+	appearance: none;	//拿掉原生下拉箭頭
+
+	//用 SVG 畫下拉箭頭
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3e%3cpolygon points='7,10 17,10 12,15' fill='black'%3e%3c/polygon%3e%3c/svg%3e");
+	background-repeat: no-repeat;
+	background-position: calc(100% - 12px) center;
+
+	@include break-sm {
+		width: 100%;
+	}
+}

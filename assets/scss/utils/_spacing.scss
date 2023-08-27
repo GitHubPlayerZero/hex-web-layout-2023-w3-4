@@ -2,6 +2,11 @@
 .px-gutter {
 	@include gutter-outside;
 }
+@include break-md {
+	.px-md-gutter {
+		@include gutter-outside;
+	}
+}
 
 
 // padding top
@@ -33,6 +38,20 @@ $pb-list: (
 }
 
 
+// padding x
+$px-list: (
+	0: 0,
+);
+@include genClass_PaddingX($px-list);
+
+@include break-md {
+	@include genClass_PaddingX($px-list, $pad);
+}
+@include break-sm {
+	@include genClass_PaddingX($px-list, $phone);
+}
+
+
 // padding y
 $py-list: (
 	3: 3 * $space,
@@ -60,6 +79,7 @@ $py-list: (
 // margin right
 $mr-list: (
 	5: 5 * $space,
+	7: 7 * $space,
 	10px: 10px,
 );
 @include genClass_MarginRight($mr-list);
@@ -78,6 +98,7 @@ $mb-list: (
 	4: 4 * $space,
 	6: 6 * $space,
 	8: 8 * $space,
+	10: 10 * $space,
 	16: 16 * $space,
 	20: 20 * $space,
 );
@@ -90,6 +111,19 @@ $mb-list: (
 	@include genClass_MarginBottom($mb-list, $phone);
 }
 
+
+// margin x
+$mx-list: (
+	0: 0,
+);
+@include genClass_MarginX($mx-list);
+
+@include break-md {
+	@include genClass_MarginX($mx-list, $pad);
+}
+@include break-sm {
+	@include genClass_MarginX($mx-list, $phone);
+}
 
 
 

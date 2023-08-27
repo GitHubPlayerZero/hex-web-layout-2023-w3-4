@@ -1,11 +1,10 @@
 /* flex */
 
-.row {
+.flex {
 	display: flex;
 }
 
-.column {
-	display: flex;
+.fd-column {
 	flex-direction: column;
 }
 
@@ -16,11 +15,30 @@
 .jc-center {
 	justify-content: center;
 }
-
 .jc-between {
 	justify-content: space-between;
 }
 
 .ai-center {
 	align-items: center;
+}
+.ai-baseline {
+	align-items: baseline;
+}
+
+
+@include break-md {
+	.flex-md {
+		display: flex;
+	}
+	
+	.fd-md-column {
+		flex-direction: column;
+	}
+}
+
+@include break-sm {
+	.fd-sm-column {
+		flex-direction: column;
+	}
 }
